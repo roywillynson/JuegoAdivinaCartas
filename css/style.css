@@ -1,0 +1,88 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-color: #f1f1f1;
+    width: 100%;
+    font-size: 1.3em;
+}
+
+#main {
+    background-color: white;
+}
+
+#vidas span::before {
+
+    padding-right: 4px;
+    transition: 2s ease;
+
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.card-item {
+
+    height: 150px;
+    width: calc((100% - 100px)/4);
+    margin-bottom: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 1.2s ease;
+
+}
+
+
+.card-atras,
+.card-delante {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+
+.card-atras {
+    transform: rotateY(180deg);
+}
+
+
+.card-delante {
+    background-color: darkred;
+    background-image: url('../img/delante2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2.7em;
+    font-weight: 800;
+    font-size: 2em;
+}
+
+.card-active {
+    transform: rotateY(180deg);
+}
+
+.imagen {
+
+    object-fit: contain;
+    object-position: center center;
+    height: 100%;
+    padding: 35px;
+
+}

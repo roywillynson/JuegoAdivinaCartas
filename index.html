@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Adivinar Cartas</title>
+
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="css/vendor/bootstrap/bootstrap.min.css">
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!--FONT AWESOME -->
+  <script src="https://use.fontawesome.com/78a54808f9.js"></script>
+</head>
+
+<body>
+
+  <main id="main" class="mx-auto w-75 shadow">
+
+    <!-- Informacion -->
+    <div class="container-info">
+      <div class="mx-5 pt-2">
+        <div class="row justify-content-center font-weight-bold text-center">
+          <span class="col-md-2">Rachas: <span id="rachas">0</span> </span>
+          <span class="col-md-2">Records: <span id="records"> 0</span> </span>
+          <span class="col-md-2">Puntos: <span id="puntos">0</span></span>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="container-info">
+      <div class="mx-5 py-2">
+        <div class="row font-weight-bold">
+
+          <span id="vidas" class="col-md-4 text-left">Vidas:&nbsp;
+          </span>
+
+          <span class="col-md-4 text-center fa fa-play"></span>
+
+          <div class="col-md-4 left">
+            <button id="btn-nuevo" class="btn btn-primary float-right">Jugar de nuevo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="card-wrapper mx-5">
+
+      <div id="cards" class="card-container py-2">
+
+        <!--Aqui se Insertan las Cartas-->
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- JQUERY JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+  </script>
+  <!-- POPPER.JS -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- BOOTSTRAP JS-->
+  <script src="js/vendor/bootstrap/bootstrap.js"></script>
+  <!-- CUSTOM JS -->
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
