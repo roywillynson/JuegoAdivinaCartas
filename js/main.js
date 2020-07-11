@@ -6,6 +6,7 @@ vidas: 10
 //Variables del dom
 let $cardParent = $('#cards');
 let $buttonNuevo = $('#btn-nuevo');
+let $resetModal = $('#reset-game');
 let $vidas = $('#vidas');
 let $rachas = $('#rachas');
 let $records = $('#records');
@@ -66,6 +67,7 @@ let jugador = {
     refreshScreenValue: function () {
         $rachas.text(this.rachas);
         $puntos.text(this.puntos);
+        $records.text(getRecordSessionStorage());
     }
 
 }
@@ -93,6 +95,9 @@ function eventListeners() {
     //Evento boton nuevo juego
     $buttonNuevo.click(reiniciarJuego);
 
+    //Evento modal button
+    $resetModal.click(reiniciarJuego);
+
 
 }
 
@@ -100,6 +105,8 @@ function eventListeners() {
 //Configuracion inicial
 function inicio() {
     jugador.rellenarVidas(); //Rellenar vidas
+    jugador.refreshScreenValue(); //Refrescar los valores en pantalla
+
     printCards(); //Imprimir las cartas
 
     $cardParent.children().addClass('card-active');
@@ -128,20 +135,55 @@ function loserOrWinner() {
 
     //Perdio
     if (jugador.vidas === 0 && jugador.winner === false) {
+        $cardParent.off('click');
 
-        alert('Ha perdido quiere intentar de nuevo?')
-        reiniciarJuego();
+        upRecordSessionStorage();
 
+        $('#mensaje').text('Perdiste!!');
+        $('#modal-center').modal('show');
+        $('#aciertos').text(jugador.puntos);
+        $('#fallos').text((10 - jugador.vidas));
     }
 
     //Gano
     if (jugador.vidas > 0 && $cardParent.children(':not(.card-active)').length === 0) {
 
-        let deNuevo = confirm('Felicidades!!!!!!! Desea jugar de nuevo?');
+        $cardParent.off('click');
 
-        if (deNuevo) reiniciarJuego();
+        upRecordSessionStorage();
 
+        $('#mensaje').text('Ganaste!!');
+        $('#modal-center').modal('show');
+        $('#aciertos').text(jugador.puntos);
+        $('#fallos').text((10 - jugador.vidas));
     }
+
+}
+
+function getRecordSessionStorage() {
+
+    //Obtener record si existe
+    let record;
+
+    if (sessionStorage.getItem('record') === null) {
+        record = 0;
+    } else {
+        record = JSON.parse(sessionStorage.getItem('record'));
+    }
+
+    return record;
+
+}
+
+function upRecordSessionStorage() {
+
+    let record = getRecordSessionStorage();
+
+    //Aumentar record
+    record = record + 1;
+
+    //Modificar Record
+    sessionStorage.setItem('record', record);
 
 }
 
@@ -170,7 +212,7 @@ function verificarCardsSeleccionadas() {
                 cards[0].removeClass('card-active');
                 cards[1].removeClass('card-active');
 
-            }, 1000);
+            }, 800);
 
             cardsSelecionadas = [];
         }
