@@ -76,9 +76,9 @@ let cardsSelecionadas = [];
 
 //Sonidos
 let aciertoSound = new Audio('../moneda.mp3');
-aciertoSound.volume = 0.9;
+aciertoSound.volume = 50;
 let failSound = new Audio('../bowsers.mp3');
-failSound.volume = 0.9;
+failSound.volume = 50;
 
 
 eventListeners();
